@@ -1,0 +1,249 @@
+.datepicker-container {
+  position: relative;
+  width: 100%;
+}
+
+.datepicker-input {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s;
+  min-height: 48px;
+}
+
+.datepicker-input:hover {
+  border-color: var(--border-hover);
+}
+
+.datepicker-input.active {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.datepicker-icon {
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+}
+
+.datepicker-value {
+  flex: 1;
+  font-size: 1rem;
+}
+
+.datepicker-value.placeholder {
+  color: var(--text-placeholder);
+}
+
+.datepicker-arrow {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.datepicker-input.active .datepicker-arrow {
+  transform: rotate(180deg);
+}
+
+.datepicker-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 1000;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  padding: 1rem;
+  min-width: 320px;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.datepicker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-btn:hover {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.current-month-year {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  padding: 0 0.5rem;
+}
+
+.datepicker-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.datepicker-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+.day-btn:hover:not(:disabled) {
+  background: var(--bg-tertiary);
+  transform: scale(1.1);
+}
+
+.day-btn.other-month {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.day-btn.other-month:hover {
+  background: transparent;
+  transform: none;
+}
+
+.day-btn.today {
+  background: var(--bg-tertiary);
+  border: 2px solid var(--accent-primary);
+}
+
+.day-btn.selected {
+  background: var(--accent-gradient);
+  color: white;
+  font-weight: 600;
+}
+
+.day-btn.selected:hover {
+  transform: scale(1.1);
+}
+
+.day-btn.disabled {
+  color: var(--text-muted);
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.day-btn.disabled:hover {
+  background: transparent;
+  transform: none;
+}
+
+.datepicker-footer {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-btn {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.today-btn {
+  background: var(--accent-gradient);
+  color: white;
+}
+
+.today-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.clear-btn {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.clear-btn:hover {
+  background: var(--border-hover);
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  .datepicker-dropdown {
+    min-width: 280px;
+    padding: 0.75rem;
+  }
+  
+  .day-btn {
+    font-size: 0.8rem;
+  }
+  
+  .current-month-year {
+    font-size: 0.9rem;
+  }
+}
